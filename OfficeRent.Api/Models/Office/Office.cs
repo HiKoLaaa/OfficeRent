@@ -8,13 +8,17 @@ namespace OfficeRent.Api.Models.Office
 
 		public Address Address { get; }
 
-		public byte Floor { get; }
+		public short Floor { get; }
 
-		public Office(string name, Address address, byte floor)
+		public Office(string name, Address address, short floor)
 		{
 			Name = name;
 			Address = address;
 			Floor = floor;
+		}
+
+		private Office()
+		{
 		}
 	}
 }
