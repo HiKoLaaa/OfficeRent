@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Npgsql.NameTranslation;
 using OfficeRent.Api.Database.Configurations;
 using OfficeRent.Api.Models.Office;
-using static EfSnakeCase.Core;
 
 namespace OfficeRent.Api.Database
 {
@@ -13,14 +13,12 @@ namespace OfficeRent.Api.Database
 			: base(options)
 		{
 		}
-		
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.UseSerialColumns();
 
 			modelBuilder.ApplyConfiguration(new OfficeConfiguration());
-
-			ToSnakeCase(modelBuilder);
 		}
 	}
 }

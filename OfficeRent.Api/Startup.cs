@@ -21,7 +21,7 @@ namespace OfficeRent.Api
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<OfficeDbContext>(
-				options => options.UseNpgsql(_configuration["ConnectionString"]));
+				options => options.UseNpgsql(_configuration["ConnectionString"]).UseSnakeCaseNamingConvention());
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
