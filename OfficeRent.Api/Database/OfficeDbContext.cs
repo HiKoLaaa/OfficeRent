@@ -1,0 +1,24 @@
+using Microsoft.EntityFrameworkCore;
+using Npgsql.NameTranslation;
+using OfficeRent.Api.Database.Configurations;
+using OfficeRent.Api.Models.Office;
+
+namespace OfficeRent.Api.Database
+{
+	internal sealed class OfficeDbContext : DbContext
+	{
+		public DbSet<Office> Offices { get; set; } = null!;
+
+		public OfficeDbContext(DbContextOptions<OfficeDbContext> options)
+			: base(options)
+		{
+		}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.UseSerialColumns();
+
+			modelBuilder.ApplyConfiguration(new OfficeConfiguration());
+		}
+	}
+}

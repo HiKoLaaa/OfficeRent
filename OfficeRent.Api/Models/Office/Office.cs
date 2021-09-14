@@ -4,17 +4,21 @@ namespace OfficeRent.Api.Models.Office
 	{
 		public int Id { get; private set; }
 
-		public string Name { get; }
+		public string Name { get; private set; } = null!;
 
-		public Address Address { get; }
+		public Address Address { get; private set; } = null!;
 
-		public byte Floor { get; }
+		public short Floor { get; private set; }
 
-		public Office(string name, Address address, byte floor)
+		public Office(string name, Address address, short floor)
 		{
 			Name = name;
 			Address = address;
 			Floor = floor;
+		}
+
+		private Office()
+		{
 		}
 	}
 }
