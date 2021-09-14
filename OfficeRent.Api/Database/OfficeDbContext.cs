@@ -9,7 +9,7 @@ namespace OfficeRent.Api.Database
 	{
 		public DbSet<Office> Offices { get; set; } = null!;
 
-		public OfficeDbContext(DbContextOptions<DbContext> options)
+		public OfficeDbContext(DbContextOptions<OfficeDbContext> options)
 			: base(options)
 		{
 		}

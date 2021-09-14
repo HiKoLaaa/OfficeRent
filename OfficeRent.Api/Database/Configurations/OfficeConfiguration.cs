@@ -8,9 +8,9 @@ namespace OfficeRent.Api.Database.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Office> builder)
 		{
-			builder.HasKey(office => office.Id).SetPkName(nameof(Office.Id));
-
+			builder.HasKey(office => office.Id);
 			builder.Property(office => office.Name).IsRequired().HasColumnType("varchar(100)");
+
 			builder
 				.OwnsOne(office => office.Address, address =>
 				{
