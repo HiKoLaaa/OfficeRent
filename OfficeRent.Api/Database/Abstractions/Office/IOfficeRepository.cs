@@ -6,8 +6,14 @@ namespace OfficeRent.Api.Database.Abstractions
 {
 	public interface IOfficeRepository
 	{
-		Task<Office> GetOffice(int id);
+		Task<Office> GetOfficeAsync(int id);
 
 		IQueryable<Office> GetOffices();
+
+		Task AddOfficeAsync(Office office);
+
+		void EditOffice(Office office);
+
+		Task SaveAllChangesAsync();
 	}
 }

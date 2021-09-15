@@ -27,7 +27,7 @@ namespace OfficeRent.Tests
 	    [SetUp]
 		public void Setup()
 		{
-			ConfigureServiceCollection(_serviceCollection);
+			ConfigureServices(_serviceCollection);
 		}
 
 		[TearDown]
@@ -37,10 +37,10 @@ namespace OfficeRent.Tests
 			_serviceCollection.Clear();
 		}
 
-		protected virtual void ConfigureServiceCollection(IServiceCollection serviceCollection)
+		protected virtual void ConfigureServices(IServiceCollection services)
 		{
-			serviceCollection.AddDbContext<TestDbContext>();
-			serviceCollection.AddTransient<IOfficeRepository, OfficeRepository>(_ => new OfficeRepository(Database));
+			services.AddDbContext<TestDbContext>();
+			services.AddTransient<IOfficeRepository, OfficeRepository>(_ => new OfficeRepository(Database));
 		}
 
 		protected async Task AddEntityToDbAsync<TEntity>(TEntity entity) where TEntity : class

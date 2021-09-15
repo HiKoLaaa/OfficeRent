@@ -1,20 +1,18 @@
 using Microsoft.Extensions.DependencyInjection;
+using OfficeRent.Api;
 using OfficeRent.Api.GraphQL;
+using OfficeRent.Api.GraphQL.Mutations;
 using OfficeRent.Api.GraphQL.Offices;
 
 namespace OfficeRent.Tests.GraphQL
 {
 	public abstract class GraphQLTestsBase : OfficeTestsBase
 	{
-		protected override void ConfigureServiceCollection(IServiceCollection serviceCollection)
+		protected override void ConfigureServices(IServiceCollection services)
 		{
-			base.ConfigureServiceCollection(serviceCollection);
+			base.ConfigureServices(services);
 
-			serviceCollection
-				.AddGraphQLServer()
-				.AddQueryType<QueryType>()
-				.AddErrorFilter<ErrorFilter>()
-				.AddType<OfficeType>();
+			DiConfigurator.ConfigureGraphQL(services);
 		}
 	}
 }

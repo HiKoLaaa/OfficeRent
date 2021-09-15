@@ -8,8 +8,8 @@ namespace OfficeRent.Api.GraphQL
 {
 	internal class Query
 	{
-		public async Task<Office> GetOffice(int id, [Service] IOfficeRepository officeRepository) =>
-			await officeRepository.GetOffice(id);
+		public async Task<Office> GetOfficeAsync(int id, [Service] IOfficeRepository officeRepository) =>
+			await officeRepository.GetOfficeAsync(id);
 
 		public IQueryable<Office> GetOffices([Service] IOfficeRepository officeRepository) =>
 			officeRepository.GetOffices();
