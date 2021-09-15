@@ -8,7 +8,7 @@ namespace OfficeRent.Api.GraphQL
 		protected override void Configure(IObjectTypeDescriptor<Query> descriptor)
 		{
 			descriptor
-				.Field(query => query.GetOffice(default, default!))
+				.Field(query => query.GetOfficeAsync(default, default!))
 				.Type<NonNullType<OfficeType>>()
 				.Description("Get office with specified id.");
 

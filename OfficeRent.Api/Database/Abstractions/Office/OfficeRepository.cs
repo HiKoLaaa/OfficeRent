@@ -14,7 +14,7 @@ namespace OfficeRent.Api.Database.Abstractions
 			_context = context;
 		}
 
-		public async Task<Office> GetOffice(int id)
+		public async Task<Office> GetOfficeAsync(int id)
 		{
 			var office = await _context.Offices.FindAsync(id);
 			if (office is null)
@@ -24,5 +24,11 @@ namespace OfficeRent.Api.Database.Abstractions
 		}
 
 		public IQueryable<Office> GetOffices() => _context.Offices;
+
+		public async Task AddOfficeAsync(Office office) => await _context.Offices.AddAsync(office);
+
+		public void EditOffice(Office office) => _context.Update(office);
+
+		public async Task SaveAllChangesAsync() => await _context.SaveChangesAsync();
 	}
 }

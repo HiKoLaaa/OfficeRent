@@ -1,0 +1,22 @@
+﻿{
+  "Label": null,
+  "Path": null,
+  "Data": {
+    "addOffice": {
+      "office": {
+        "id": 1,
+        "name": "office number 1",
+        "floor": 1,
+        "address": {
+          "street": "Koroleva",
+          "city": "Moscow",
+          "streetNumber": "1"
+        }
+      }
+    }
+  },
+  "Errors": null,
+  "Extensions": null,
+  "ContextData": null,
+  "HasNext": null
+}
