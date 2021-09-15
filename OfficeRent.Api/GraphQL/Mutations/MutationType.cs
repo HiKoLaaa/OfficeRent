@@ -14,7 +14,7 @@ namespace OfficeRent.Api.GraphQL.Mutations
 			descriptor
 				.Field(mutation => mutation.AddOfficeAsync(default!, default!))
 				.Argument(
-					"officeAddInput",
+					AddOfficeInputName,
 					argumentDescriptor => argumentDescriptor.Type<NonNullType<OfficeAddInputType>>())
 				.Type<NonNullType<OfficeOutputType>>()
 				.Description("Add new entity of office type.");
@@ -22,7 +22,7 @@ namespace OfficeRent.Api.GraphQL.Mutations
 			descriptor
 				.Field(mutation => mutation.EditOfficeAsync(default, default!, default!))
 				.Argument(
-					"officeEditInput",
+					EditOfficeInputName,
 					argumentDescriptor => argumentDescriptor.Type<NonNullType<OfficeEditInputType>>())
 				.Argument(
 					"id",

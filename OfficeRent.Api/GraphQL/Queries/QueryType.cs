@@ -1,7 +1,7 @@
 using HotChocolate.Types;
 using OfficeRent.Api.GraphQL.Offices;
 
-namespace OfficeRent.Api.GraphQL
+namespace OfficeRent.Api.GraphQL.Queries
 {
 	internal class QueryType : ObjectType<Query>
 	{

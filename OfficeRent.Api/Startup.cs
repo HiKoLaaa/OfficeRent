@@ -22,6 +22,7 @@ namespace OfficeRent.Api
 			services.AddDbContext<OfficeDbContext>(
 				options => options.UseNpgsql(_configuration["ConnectionString"]).UseSnakeCaseNamingConvention());
 
+			services.AddCors();
 			services.ConfigureRepositories();
 			services.ConfigureGraphQL();
 		}
@@ -33,6 +34,7 @@ namespace OfficeRent.Api
 				app.UseDeveloperExceptionPage();
 			}
 
+			app.UseCors(policyBuilder => policyBuilder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 			app.UseRouting();
 
 			app.UseEndpoints(endpoints => endpoints.MapGraphQL());

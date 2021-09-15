@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OfficeRent.Api.Database.Abstractions;
 using OfficeRent.Api.GraphQL;
 using OfficeRent.Api.GraphQL.Mutations;
+using OfficeRent.Api.GraphQL.Queries;
 
 namespace OfficeRent.Api
 {
