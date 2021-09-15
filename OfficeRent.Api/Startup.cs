@@ -41,7 +41,7 @@ namespace OfficeRent.Api
 			{
 				app.UseDeveloperExceptionPage();
 			}
-			
+
 			app.UseRouting();
 
 			app.UseEndpoints(
