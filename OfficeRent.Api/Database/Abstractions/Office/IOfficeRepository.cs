@@ -12,6 +12,8 @@ namespace OfficeRent.Api.Database.Abstractions
 
 		Task AddOfficeAsync(Office office);
 
+		void DeleteOffice(Office office);
+
 		void EditOffice(Office office);
 
 		Task SaveAllChangesAsync();

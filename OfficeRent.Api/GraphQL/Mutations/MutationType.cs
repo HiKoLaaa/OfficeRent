@@ -29,6 +29,14 @@ namespace OfficeRent.Api.GraphQL.Mutations
 					argumentDescriptor => argumentDescriptor.Type<NonNullType<IntType>>())
 				.Type<NonNullType<OfficeOutputType>>()
 				.Description("Edit existing office type.");
+
+			descriptor
+				.Field(mutation => mutation.DeleteOfficeAsync(default, default!))
+				.Argument(
+					"id",
+					argumentDescriptor => argumentDescriptor.Type<NonNullType<IntType>>())
+				.Type<NonNullType<OfficeOutputType>>()
+				.Description("Delete entity of the office.");
 		}
 	}
 }

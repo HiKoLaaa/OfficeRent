@@ -54,6 +54,16 @@ namespace OfficeRent.Api.GraphQL.Mutations
 			return new OfficeOutput(office);
 		}
 
+		public async Task<OfficeOutput> DeleteOfficeAsync(int id, [Service] IOfficeRepository officeRepository)
+		{
+			var office = await officeRepository.GetOfficeAsync(id);
+			officeRepository.DeleteOffice(office);
+
+			await officeRepository.SaveAllChangesAsync();
+
+			return new OfficeOutput(office);
+		}
+
 		private Address CreateEditingAddress(AddressEditInput addressEditInput, Address oldAddress)
 		{
 			var city = !string.IsNullOrEmpty(addressEditInput.City) ? addressEditInput.City : oldAddress.City;

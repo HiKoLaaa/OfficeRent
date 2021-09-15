@@ -98,6 +98,23 @@ namespace OfficeRent.Tests
 			result.MatchSnapshot();
 		}
 
+		[Test]
+		public async Task DeleteOffice_RequestThrowGraphQL_OfficeDeleted()
+		{
+			var office = new OfficeTestBuilder()
+				.WithAddress(new AddressTestBuilder().WithCity("Moscow").WithStreet("Koroleva").WithStreetNumber("1").Build())
+				.WithName("office number 1")
+				.WithFloor(1)
+				.Build();
+
+			await AddEntityToDbAsync(office);
+			await ExecuteRequest(OfficeQueries.DeleteOffice(office.Id));
+
+			var result = await ExecuteRequest(OfficeQueries.GetOffice(office.Id));
+
+			result.MatchSnapshot();
+		}
+
 		private async Task<IExecutionResult> ExecuteRequest(string requestText)
 		{
 			var executor = await ServiceProvider.GetRequestExecutorAsync();
@@ -219,6 +236,29 @@ namespace OfficeRent.Tests
 			}}
 		}}
 	}}";
+			}
+
+			public static string DeleteOffice<TId>(TId id)
+			{
+				return
+					$@"mutation
+{{
+	deleteOffice(id: {id})
+	{{
+		office
+		{{
+			id,
+				name,
+				floor,
+				address
+				{{
+					street,
+					city,
+					streetNumber
+				}}
+		}}
+	}}
+}}";
 			}
 
 			private static string AddKeyValueIfNotNullOrEmpty(string key, string? value) =>
