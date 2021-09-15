@@ -1,0 +1,12 @@
+query GetOffices {
+    offices {
+        id
+        name
+        address {
+            city
+            street
+            streetNumber
+        }
+        floor
+    }
+}
