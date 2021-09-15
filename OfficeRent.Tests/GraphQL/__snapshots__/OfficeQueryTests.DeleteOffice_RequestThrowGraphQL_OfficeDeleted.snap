@@ -1,37 +1,21 @@
 ﻿{
   "Label": null,
   "Path": null,
-  "Data": null,
-  "Errors": [
-    {
-      "Message": "Entity of type Office with id 1 not found.",
-      "Code": null,
-      "Path": {
-        "Parent": null,
-        "Depth": 0,
-        "Name": "office"
-      },
-      "Locations": [
-        {
-          "Line": 3,
-          "Column": 2
+  "Data": {
+    "deleteOffice": {
+      "office": {
+        "id": 1,
+        "name": "office number 1",
+        "floor": 1,
+        "address": {
+          "street": "Koroleva",
+          "city": "Moscow",
+          "streetNumber": "1"
         }
-      ],
-      "Extensions": null,
-      "Exception": {
-        "EntityType": "OfficeRent.Api.Models.Offices.Office, OfficeRent.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-        "EntityId": 1,
-        "StackTrace": "   at OfficeRent.Api.Database.Abstractions.OfficeRepository.GetOfficeAsync(Int32 id) in D:\\RiderProjects\\OfficeRent\\OfficeRent.Api\\Database\\Abstractions\\Office\\OfficeRepository.cs:line 21\n   at OfficeRent.Api.GraphQL.Query.GetOfficeAsync(Int32 id, IOfficeRepository officeRepository) in D:\\RiderProjects\\OfficeRent\\OfficeRent.Api\\GraphQL\\Queries\\Query.cs:line 13\n   at HotChocolate.Resolvers.Expressions.ExpressionHelper.AwaitTaskHelper[T](Task`1 task)\n   at HotChocolate.Types.FieldMiddlewareCompiler.<>c__DisplayClass3_0.<<CreateResolverMiddleware>b__0>d.MoveNext()\n--- End of stack trace from previous location ---\n   at HotChocolate.Execution.Processing.ResolverTask.ExecuteResolverPipelineAsync(CancellationToken cancellationToken)\n   at HotChocolate.Execution.Processing.ResolverTask.TryExecuteAsync(CancellationToken cancellationToken)",
-        "Message": "Entity of type Office with id 1 not found.",
-        "Data": {},
-        "InnerException": null,
-        "HelpLink": null,
-        "Source": "OfficeRent.Api",
-        "HResult": -2146233088
-      },
-      "SyntaxNode": null
+      }
     }
-  ],
+  },
+  "Errors": null,
   "Extensions": null,
   "ContextData": null,
   "HasNext": null

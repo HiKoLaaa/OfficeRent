@@ -107,11 +107,11 @@ namespace OfficeRent.Tests
 				.Build();
 
 			await AddEntityToDbAsync(office);
-			await ExecuteRequest(OfficeQueries.DeleteOffice(office.Id));
 
-			var result = await ExecuteRequest(OfficeQueries.GetOffice(office.Id));
+			var result = await ExecuteRequest(OfficeQueries.DeleteOffice(office.Id));
 
 			result.MatchSnapshot();
+			Assert.IsEmpty(Database.Offices);
 		}
 
 		private async Task<IExecutionResult> ExecuteRequest(string requestText)
