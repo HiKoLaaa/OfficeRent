@@ -13,7 +13,7 @@ namespace OfficeRent.Tests.Database
 		public TestDbContext()
 		{
 			var options = new DbContextOptionsBuilder<OfficeDbContext>()
-				.UseInMemoryDatabase(databaseName: $"InMemory{_databaseNumber}")
+				.UseInMemoryDatabase($"InMemory{_databaseNumber}")
 				.Options;
 
 			Interlocked.Increment(ref _databaseNumber);

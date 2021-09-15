@@ -17,6 +17,21 @@ namespace OfficeRent.Api.Models.Offices
 			Floor = floor;
 		}
 
+		public void ChangeName(string name)
+		{
+			Name = name;
+		}
+
+		public void ChangeAddress(Address address)
+		{
+			Address = address;
+		}
+
+		public void ChangeFloor(short floor)
+		{
+			Floor = floor;
+		}
+
 		private Office()
 		{
 		}

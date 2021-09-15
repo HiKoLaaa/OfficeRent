@@ -1,11 +1,10 @@
 using HotChocolate.Types;
-using OfficeRent.Api.Models.Offices;
 
 namespace OfficeRent.Api.GraphQL.Offices
 {
-	internal class AddressInputType : InputObjectType<Address>
+	internal class AddressAddInputType : InputObjectType<AddressAddInput>
 	{
-		protected override void Configure(IInputObjectTypeDescriptor<Address> descriptor)
+		protected override void Configure(IInputObjectTypeDescriptor<AddressAddInput> descriptor)
 		{
 			descriptor.Field(address => address.City).Type<NonNullType<StringType>>();
 			descriptor.Field(address => address.Street).Type<NonNullType<StringType>>();

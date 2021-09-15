@@ -16,13 +16,13 @@ namespace OfficeRent.Tests.Database.TestBuilders.Offices
 			_city = city;
 			return this;
 		}
-		
+
 		public AddressTestBuilder WithStreet(string street)
 		{
 			_street = street;
 			return this;
 		}
-		
+
 		public AddressTestBuilder WithStreetNumber(string streetNumber)
 		{
 			_streetNumber = streetNumber;
@@ -32,13 +32,19 @@ namespace OfficeRent.Tests.Database.TestBuilders.Offices
 		public override Address Build()
 		{
 			if (_city.IsNullOrEmpty())
+			{
 				_city = RandomValueGenerator.GetRandomString();
+			}
 
 			if (_street.IsNullOrEmpty())
+			{
 				_street = RandomValueGenerator.GetRandomString();
+			}
 
 			if (_streetNumber.IsNullOrEmpty())
+			{
 				_streetNumber = RandomValueGenerator.GetRandomString();
+			}
 
 			return new Address(_city!, _street!, _streetNumber!);
 		}

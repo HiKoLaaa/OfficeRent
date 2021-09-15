@@ -17,14 +17,14 @@ namespace OfficeRent.Tests
 
 		private readonly IServiceCollection _serviceCollection;
 
-	 	internal OfficeDbContext Database => ServiceProvider.GetRequiredService<TestDbContext>().DbContext;
+		internal OfficeDbContext Database => ServiceProvider.GetRequiredService<TestDbContext>().DbContext;
 
-	    protected OfficeTestsBase()
-	    {
-		    _serviceCollection = new ServiceCollection();
-	    }
+		protected OfficeTestsBase()
+		{
+			_serviceCollection = new ServiceCollection();
+		}
 
-	    [SetUp]
+		[SetUp]
 		public void Setup()
 		{
 			ConfigureServices(_serviceCollection);
@@ -55,6 +55,9 @@ namespace OfficeRent.Tests
 			await SaveChangesAsync();
 		}
 
-		private async Task SaveChangesAsync() => await Database.SaveChangesAsync();
+		private async Task SaveChangesAsync()
+		{
+			await Database.SaveChangesAsync();
+		}
 	}
 }

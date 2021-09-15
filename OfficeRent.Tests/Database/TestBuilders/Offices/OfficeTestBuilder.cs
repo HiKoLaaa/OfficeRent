@@ -10,7 +10,7 @@ namespace OfficeRent.Tests.Database.TestBuilders.Offices
 		private Address? _address;
 
 		private short? _floor;
-		
+
 		public OfficeTestBuilder WithName(string name)
 		{
 			_name = name;
@@ -28,11 +28,13 @@ namespace OfficeRent.Tests.Database.TestBuilders.Offices
 			_floor = floor;
 			return this;
 		}
-	
+
 		public override Office Build()
 		{
 			if (_name.IsNullOrEmpty())
+			{
 				_name = RandomValueGenerator.GetRandomString();
+			}
 
 			_address ??= new AddressTestBuilder().Build();
 
