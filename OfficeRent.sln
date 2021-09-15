@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeRent.Api", "OfficeRen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeRent.Tests", "OfficeRent.Tests\OfficeRent.Tests.csproj", "{A91DAC61-597F-4BBD-9D22-4C712AF6178E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeRent.Frontend", "OfficeRent.Frontend\OfficeRent.Frontend.csproj", "{ABC3D0B5-92AA-450A-ADF5-6D20062605D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A91DAC61-597F-4BBD-9D22-4C712AF6178E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A91DAC61-597F-4BBD-9D22-4C712AF6178E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A91DAC61-597F-4BBD-9D22-4C712AF6178E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC3D0B5-92AA-450A-ADF5-6D20062605D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC3D0B5-92AA-450A-ADF5-6D20062605D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC3D0B5-92AA-450A-ADF5-6D20062605D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC3D0B5-92AA-450A-ADF5-6D20062605D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,35 @@
+﻿@page "/"
+@using System.Security.Cryptography
+@inject OfficeRentClient Client
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?"/>
+@if (Offices is not null)
+{
+    @foreach (var i in Offices)
+    {
+        <h1>@i.Address.City</h1>
+        <h1>@i.Address.Street</h1>
+        <h1>@i.Address.StreetNumber</h1>
+        <h1>@i.Id</h1>
+        <h1>@i.Floor</h1>
+        <h1>@i.Name</h1>
+    }
+}
+
+
+@code {
+
+    private IEnumerable<IGetOffices_Offices>? Offices { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await Client.GetOffices.ExecuteAsync();
+        Offices = result.Data!.Offices;
+        StateHasChanged();
+    }
+
+}
