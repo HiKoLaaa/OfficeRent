@@ -1,0 +1,32 @@
+﻿{
+  "Label": null,
+  "Path": null,
+  "Data": {
+    "offices": [
+      {
+        "id": 1,
+        "name": "office number 1",
+        "address": {
+          "city": "Moscow",
+          "street": "Koroleva",
+          "streetNumber": "1"
+        },
+        "floor": 1
+      },
+      {
+        "id": 2,
+        "name": "office number 2",
+        "address": {
+          "city": "Abakan",
+          "street": "Krilova",
+          "streetNumber": "2"
+        },
+        "floor": 7
+      }
+    ]
+  },
+  "Errors": null,
+  "Extensions": null,
+  "ContextData": null,
+  "HasNext": null
+}
