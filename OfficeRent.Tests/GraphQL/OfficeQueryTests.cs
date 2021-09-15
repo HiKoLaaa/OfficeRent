@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestPlatform.CoreUtilities.Extensions;
 using NUnit.Framework;
 using OfficeRent.Api.GraphQL.Mutations;
 using OfficeRent.Api.GraphQL.Offices;
-using OfficeRent.Api.Models.Offices;
 using OfficeRent.Tests.Database.TestBuilders.Offices;
 using OfficeRent.Tests.GraphQL;
 using Snapshooter.NUnit;
