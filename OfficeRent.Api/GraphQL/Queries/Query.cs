@@ -4,7 +4,7 @@ using HotChocolate;
 using OfficeRent.Api.Database.Abstractions;
 using OfficeRent.Api.Models.Offices;
 
-namespace OfficeRent.Api.GraphQL
+namespace OfficeRent.Api.GraphQL.Queries
 {
 	internal class Query
 	{

@@ -132,14 +132,11 @@ namespace OfficeRent.Tests
 			public static string GetAllOffices()
 			{
 				return
-					@"query
-{
-	offices
-	{
+					@"query {
+	offices {
 		id,
 		name,
-		address 
-		{
+		address {
 			city,
 			street,
 			streetNumber
@@ -152,14 +149,11 @@ namespace OfficeRent.Tests
 			public static string GetOffice<TId>(TId id)
 			{
 				return
-					$@"query
-{{
-	office(id: {id})
-	{{
+					$@"query {{
+	office(id: {id}) {{
 		id,
 		name,
-		address 
-		{{
+		address {{
 			city,
 			street,
 			streetNumber
@@ -172,27 +166,21 @@ namespace OfficeRent.Tests
 			public static string AddOffice(OfficeAddInput office)
 			{
 				return
-					$@"mutation
-{{
-  addOffice({MutationType.AddOfficeInputName}:
-  {{
+					$@"mutation {{
+  addOffice({MutationType.AddOfficeInputName}: {{
     name: {office.Name.AddDoubleQuote()},
-				address:
-				{{
+				address: {{
 					city: {office.Address.City.AddDoubleQuote()},
 					street: {office.Address.Street.AddDoubleQuote()},
 					streetNumber: {office.Address.StreetNumber.AddDoubleQuote()}
 				}},
 				floor: {office.Floor}
-			}})
-			{{
-				office
-				{{
+			}}) {{
+				office {{
 					id,
 					name,
 					floor,
-					address
-					{{
+					address {{
 						street,
 						city,
 						streetNumber
@@ -205,29 +193,23 @@ namespace OfficeRent.Tests
 			public static string EditOffice<TId>(TId id, OfficeEditInput office)
 			{
 				return
-					$@"mutation
-{{
+					$@"mutation {{
   editOffice(
 	id: {id},
-	{MutationType.EditOfficeInputName}:
-	{{
+	{MutationType.EditOfficeInputName}: {{
 		{AddKeyValueIfNotNullOrEmpty("name", office.Name)}
-		address:
-		{{
+		address: {{
 			{AddKeyValueIfNotNullOrEmpty("city", $"{office.Address?.City}")},
 			{AddKeyValueIfNotNullOrEmpty("street", $"{office.Address?.Street}")},
 			{AddKeyValueIfNotNullOrEmpty("streetNumber", $"{office.Address?.StreetNumber}")},
 		}},
 		{AddKeyValueIfNotNull("floor", office.Floor)}
-		}})
-		{{
-			office
-			{{
+		}}) {{
+			office {{
 				id,
 				name,
 				floor,
-				address
-				{{
+				address {{
 					street,
 					city,
 					streetNumber
@@ -240,17 +222,13 @@ namespace OfficeRent.Tests
 			public static string DeleteOffice<TId>(TId id)
 			{
 				return
-					$@"mutation
-{{
-	deleteOffice(id: {id})
-	{{
-		office
-		{{
+					$@"mutation {{
+	deleteOffice(id: {id}) {{
+		office {{
 			id,
 				name,
 				floor,
-				address
-				{{
+				address {{
 					street,
 					city,
 					streetNumber
