@@ -2,13 +2,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using HotChocolate;
 using OfficeRent.Api.Database.Abstractions;
-using OfficeRent.Api.Models.Office;
+using OfficeRent.Api.Models.Offices;
 
-internal class Query
+namespace OfficeRent.Api.GraphQL
 {
-	public async Task<Office> GetOffice(int id, [Service] IOfficeRepository officeRepository) =>
-		await officeRepository.GetOffice(id);
+	internal class Query
+	{
+		public async Task<Office> GetOffice(int id, [Service] IOfficeRepository officeRepository) =>
+			await officeRepository.GetOffice(id);
 
-	public IQueryable<Office> GetOffices([Service] IOfficeRepository officeRepository) =>
-		officeRepository.GetOffices();
+		public IQueryable<Office> GetOffices([Service] IOfficeRepository officeRepository) =>
+			officeRepository.GetOffices();
+	}
 }

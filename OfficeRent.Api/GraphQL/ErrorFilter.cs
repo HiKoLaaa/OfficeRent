@@ -1,4 +1,3 @@
-using System;
 using HotChocolate;
 
 namespace OfficeRent.Api.GraphQL

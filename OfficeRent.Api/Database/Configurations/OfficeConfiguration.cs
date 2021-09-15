@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Npgsql.NameTranslation;
-using OfficeRent.Api.Models.Office;
+using OfficeRent.Api.Models.Offices;
 
 namespace OfficeRent.Api.Database.Configurations
 {

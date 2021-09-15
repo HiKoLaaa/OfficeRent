@@ -1,5 +1,5 @@
 using HotChocolate.Types;
-using OfficeRent.Api.Models.Office;
+using OfficeRent.Api.Models.Offices;
 
 namespace OfficeRent.Api.GraphQL.Offices
 {

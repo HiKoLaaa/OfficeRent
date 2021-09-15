@@ -1,4 +1,4 @@
-namespace OfficeRent.Api.Models.Office
+namespace OfficeRent.Api.Models.Offices
 {
 	public class Office
 	{

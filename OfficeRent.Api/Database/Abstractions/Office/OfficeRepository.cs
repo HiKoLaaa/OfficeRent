@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using OfficeRent.Api.Database.Exceptions;
-using OfficeRent.Api.Models.Office;
+using OfficeRent.Api.Models.Offices;
 
 namespace OfficeRent.Api.Database.Abstractions
 {
