@@ -2,6 +2,8 @@ using System.Threading.Tasks;
 using HotChocolate.Execution;
 using Microsoft.VisualStudio.TestPlatform.CoreUtilities.Extensions;
 using NUnit.Framework;
+using OfficeRent.Api.GraphQL.Mutations;
+using OfficeRent.Api.GraphQL.Offices;
 using OfficeRent.Api.Models.Offices;
 using OfficeRent.Tests.Database.TestBuilders.Offices;
 using OfficeRent.Tests.GraphQL;
@@ -65,7 +67,33 @@ namespace OfficeRent.Tests
 				.WithFloor(1)
 				.Build();
 
-			var result = await ExecuteRequest(OfficeQueries.AddOffice(officeToAdd));
+			var officeAddInput = new OfficeAddInput(
+				officeToAdd.Name,
+				new AddressAddInput(officeToAdd.Address.City, officeToAdd.Address.Street, officeToAdd.Address.StreetNumber),
+				officeToAdd.Floor);
+
+			var result = await ExecuteRequest(OfficeQueries.AddOffice(officeAddInput));
+
+			result.MatchSnapshot();
+		}
+
+		[Test]
+		public async Task EditOffice_RequestThrowGraphQL_OfficeEdited()
+		{
+			var office = new OfficeTestBuilder()
+				.WithAddress(new AddressTestBuilder().WithCity("Moscow").WithStreet("Koroleva").WithStreetNumber("1").Build())
+				.WithName("office number 1")
+				.WithFloor(1)
+				.Build();
+
+			await AddEntityToDbAsync(office);
+
+			var officeEditInput = new OfficeEditInput(
+				Name: "office",
+				new AddressEditInput(City: "city 17", Street: "Some street 17", StreetNumber: "Beautiful street 17"),
+				Floor: 17);
+
+			var result = await ExecuteRequest(OfficeQueries.EditOffice(office.Id, officeEditInput));
 
 			result.MatchSnapshot();
 		}
@@ -73,7 +101,7 @@ namespace OfficeRent.Tests
 		private async Task<IExecutionResult> ExecuteRequest(string requestText)
 		{
 			var executor = await ServiceProvider.GetRequestExecutorAsync();
-			
+
 			var request = QueryRequestBuilder
 				.New()
 				.SetQuery(requestText)
@@ -87,7 +115,7 @@ namespace OfficeRent.Tests
 		{
 			public static string GetAllOffices()
 			{
-				return 
+				return
 					@"query
 {
 	offices
@@ -107,7 +135,7 @@ namespace OfficeRent.Tests
 
 			public static string GetOffice<TId>(TId id)
 			{
-				return 
+				return
 					$@"query
 {{
 	office(id: {id})
@@ -125,12 +153,12 @@ namespace OfficeRent.Tests
 }}";
 			}
 
-			public static string AddOffice(Office office)
+			public static string AddOffice(OfficeAddInput office)
 			{
 				return
 					$@"mutation
 {{
-  addOffice(officeInput:
+  addOffice({MutationType.AddOfficeInputName}:
   {{
     name: {office.Name.AddDoubleQuote()},
 				address:
@@ -157,6 +185,47 @@ namespace OfficeRent.Tests
 			}}
 		}}";
 			}
+
+			public static string EditOffice<TId>(TId id, OfficeEditInput office)
+			{
+				return
+					$@"mutation
+{{
+  editOffice(
+	id: {id},
+	{MutationType.EditOfficeInputName}:
+	{{
+		{AddKeyValueIfNotNullOrEmpty("name", office.Name)}
+		address:
+		{{
+			{AddKeyValueIfNotNullOrEmpty("city", $"{office.Address?.City}")},
+			{AddKeyValueIfNotNullOrEmpty("street", $"{office.Address?.Street}")},
+			{AddKeyValueIfNotNullOrEmpty("streetNumber", $"{office.Address?.StreetNumber}")},
+		}},
+		{AddKeyValueIfNotNull("floor", office.Floor)}
+		}})
+		{{
+			office
+			{{
+				id,
+				name,
+				floor,
+				address
+				{{
+					street,
+					city,
+					streetNumber
+				}}
+			}}
+		}}
+	}}";
+			}
+
+			private static string AddKeyValueIfNotNullOrEmpty(string key, string? value) =>
+				string.IsNullOrEmpty(value) ? string.Empty : $"{key}: {value.AddDoubleQuote()}";
+
+			private static string AddKeyValueIfNotNull(string key, short? value) =>
+				value is null ? string.Empty : $"{key}: {value}";
 		}
 	}
 }

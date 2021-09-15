@@ -18,17 +18,31 @@ namespace OfficeRent.Api.Database.Abstractions
 		{
 			var office = await _context.Offices.FindAsync(id);
 			if (office is null)
+			{
 				throw new EntityNotFoundException<int>(typeof(Office), id);
+			}
 
 			return office;
 		}
 
-		public IQueryable<Office> GetOffices() => _context.Offices;
+		public IQueryable<Office> GetOffices()
+		{
+			return _context.Offices;
+		}
 
-		public async Task AddOfficeAsync(Office office) => await _context.Offices.AddAsync(office);
+		public async Task AddOfficeAsync(Office office)
+		{
+			await _context.Offices.AddAsync(office);
+		}
 
-		public void EditOffice(Office office) => _context.Update(office);
+		public void EditOffice(Office office)
+		{
+			_context.Update(office);
+		}
 
-		public async Task SaveAllChangesAsync() => await _context.SaveChangesAsync();
+		public async Task SaveAllChangesAsync()
+		{
+			await _context.SaveChangesAsync();
+		}
 	}
 }

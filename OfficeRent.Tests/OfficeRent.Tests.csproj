@@ -15,7 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OfficeRent.Api\OfficeRent.Api.csproj" />
+        <ProjectReference Include="..\OfficeRent.Api\OfficeRent.Api.csproj" />
     </ItemGroup>
 
 </Project>

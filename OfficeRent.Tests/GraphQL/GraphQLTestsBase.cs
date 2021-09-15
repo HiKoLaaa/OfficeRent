@@ -12,7 +12,7 @@ namespace OfficeRent.Tests.GraphQL
 		{
 			base.ConfigureServices(services);
 
-			DiConfigurator.ConfigureGraphQL(services);
+			services.ConfigureGraphQL();
 		}
 	}
 }

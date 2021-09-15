@@ -2,9 +2,9 @@ using HotChocolate.Types;
 
 namespace OfficeRent.Api.GraphQL.Offices
 {
-	internal class OfficeAddedPayloadType : ObjectType<OfficeAddedPayload>
+	internal class OfficeOutputType : ObjectType<OfficeOutput>
 	{
-		protected override void Configure(IObjectTypeDescriptor<OfficeAddedPayload> descriptor)
+		protected override void Configure(IObjectTypeDescriptor<OfficeOutput> descriptor)
 		{
 			descriptor
 				.Field(officeAddedPayload => officeAddedPayload.Office)
