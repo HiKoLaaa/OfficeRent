@@ -11,6 +11,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.5" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Radzen.Blazor" Version="3.9.10" />
     <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="11.3.7" />
     <PackageReference Include="StrawberryShake.Core" Version="11.3.7" />
     <PackageReference Include="StrawberryShake.Transport.Http" Version="11.3.7" />
@@ -21,10 +22,6 @@
     <Content Update="wwwroot\appsettings.Development.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="OfficeRentClient\Generated" />
   </ItemGroup>
 
 </Project>

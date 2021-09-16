@@ -1,17 +1,18 @@
 @inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <NavMenu/>
+        </div>
     </div>
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
-
+    <div class="main row">
         <div class="content px-4">
             @Body
         </div>
+    </div>
+    <div class="row px-4">
+        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
     </div>
 </div>
